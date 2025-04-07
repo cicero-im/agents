@@ -1,16 +1,16 @@
 import logging
-import pickle
 
 from livekit.agents import AutoSubscribe, JobContext, WorkerOptions, cli, llm
 from livekit.agents.pipeline import VoicePipelineAgent
 from livekit.plugins import deepgram, openai, rag, silero
+import fickling
 
 logger = logging.getLogger("rag-assistant")
 annoy_index = rag.annoy.AnnoyIndex.load("vdb_data")  # see build_data.py
 
 embeddings_dimension = 1536
 with open("my_data.pkl", "rb") as f:
-    paragraphs_by_uuid = pickle.load(f)
+    paragraphs_by_uuid = fickling.load(f)
 
 
 async def entrypoint(ctx: JobContext):

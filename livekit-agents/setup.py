@@ -58,6 +58,7 @@ setuptools.setup(
         "psutil~=5.9",
         "aiohttp~=3.10",
         "typing-extensions~=4.12",
+        "fickling>=0.1.3,~=0.1.0",
     ],
     extras_require={
         ':sys_platform=="win32"': [

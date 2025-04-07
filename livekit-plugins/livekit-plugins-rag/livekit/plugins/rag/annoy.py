@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from typing import Any, Iterable, Literal
 
 import annoy
+import fickling
 
 # https://github.com/spotify/annoy
 
@@ -47,7 +48,7 @@ class AnnoyIndex:
         metadata_path = p / METADATA_FILE
 
         with open(metadata_path, "rb") as f:
-            metadata: _FileData = pickle.load(f)
+            metadata: _FileData = fickling.load(f)
 
         index = annoy.AnnoyIndex(metadata.f, metadata.metric)
         index.load(str(index_path))
