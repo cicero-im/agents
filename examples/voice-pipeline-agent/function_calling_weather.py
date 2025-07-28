@@ -1,5 +1,4 @@
 import logging
-import random
 from typing import Annotated
 
 import aiohttp
@@ -14,6 +13,7 @@ from livekit.agents import (
 )
 from livekit.agents.pipeline import AgentCallContext, VoicePipelineAgent
 from livekit.plugins import deepgram, openai, silero
+import secrets
 
 load_dotenv()
 
@@ -63,7 +63,7 @@ class AssistantFnc(llm.FunctionContext):
                 # LLM will complete this sentence if it is added to the end of the chat context
                 "The current weather in {location} is ",
             ]
-            message = random.choice(filler_messages).format(location=location)
+            message = secrets.choice(filler_messages).format(location=location)
             logger.info(f"saying filler message: {message}")
 
             # NOTE: set add_to_chat_ctx=True will add the message to the end

@@ -1,10 +1,10 @@
 import asyncio
 import logging
-import random
 
 from dotenv import load_dotenv
 from livekit import rtc
 from livekit.agents import JobContext, WorkerOptions, cli
+import secrets
 
 # Load environment variables
 load_dotenv()
@@ -29,7 +29,7 @@ async def entrypoint(job: JobContext):
             await asyncio.sleep(0.1)  # 100ms
 
             # Create a new random color
-            r, g, b = [random.randint(0, 255) for _ in range(3)]
+            r, g, b = [secrets.SystemRandom().randint(0, 255) for _ in range(3)]
             color = bytes([r, g, b, 255])
 
             # Fill the frame with the new random color
